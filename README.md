@@ -1,2 +1,2 @@
-# MINISK
+# MINSK
 Deliverables
