@@ -1,4 +1,4 @@
-package Deliverable_1;
+package minskg;
 
 public class Sine {
 	private double PI = 3.141592653589793;

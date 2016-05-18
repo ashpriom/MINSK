@@ -1,4 +1,4 @@
-package Deliverable_1;
+package minskg;
 
 import java.util.Scanner;
 

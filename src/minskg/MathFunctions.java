@@ -1,4 +1,4 @@
-package Deliverable_1;
+package minskg;
 
 public class MathFunctions {
 
