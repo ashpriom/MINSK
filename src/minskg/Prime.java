@@ -1,7 +1,4 @@
 package minskg;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -54,14 +51,52 @@ public class Prime {
 		}
 		return true;
 	}
-	/**
-	 * 
-	 * @param value String
-	 * @return if the value is positive number,true. if not, false
-	 */
-	public boolean isPositiveNumber(String value){
-		return value.matches("^[0-9]+$");
-	}
+	
+	boolean checkPrimality(double a, double b, double c)
+    {
+        if(a==0)
+        return false;
+        if(a<0)
+          a = a * -1;
+        if(b<0)
+          b = b * -1;
+        if(c<0)
+          c = c * -1;
+        double absVal= a+b+c;
+        int abs=(int) absVal;
+        if(absVal%abs !=0 )
+        	return false;
+        if(isPrime(abs))
+           return true;
+        else 
+           return false;
+      
+    }
+	boolean checkComposite(double a, double b, double c,double d)
+    {
+        if(a==0)
+        return false;
+        if(a<0)
+          a = a * -1;
+        if(b<0)
+          b = b * -1;
+        if(c<0)
+          c = c * -1;
+        if(d<0)
+            d = d * -1;
+        double absVal= a + b + c + d;
+        int abs=(int) absVal;
+        if(absVal%abs !=0 )
+        	return false;
+        if(isPrime(abs))
+           return false;
+        else if (abs%2==1)
+        	return true;
+        else
+           return false;
+      
+    }
+
 /**
  * source file: http://www.primos.mat.br/primeiros_10000_primos.txt
  * to test tons of numbers, if it is prime number or not and save the result on output.txt
@@ -69,43 +104,25 @@ public class Prime {
  * @param args unused
  * @throws FileNotFoundException no file 
  */
-	public void primeFunction() throws FileNotFoundException {
+	public void primeFunction(){
 		Scanner input = new Scanner(System.in);
-		String choice = "";
-		System.out.println("1:: to put number");
-		System.out.println("2:: to read tons of number from primeiros_10000_primos.txt");
-		boolean is_choice = false;
-		do {
-			if(is_choice){
-				System.out.println("choice "+ choice +" is not available");
-			}
-			choice = input.next();
-		}while(is_choice=!(choice.equals("1") || choice.equals("2")));
 		Prime p = new Prime();
 		//test single value
-		if(choice.equals("1")){
-			System.out.println("number ::");	
-		String value = input.next();
-		if(p.isPositiveNumber(value)){
-			int positive_number = Integer.parseInt(value);
-			System.out.println(positive_number +" is "+(p.isPrime(positive_number)?"":" not ")+" prime number");
-		}else{
-			System.out.println(value+" is not prime number");
+		System.out.println("number ::");
+		int value = 0;
+		try{
+			value = input.nextInt();
+			System.out.println(value +" is "+(p.isPrime(value)?"":" not ")+" prime number");
+		}catch(Exception e){
+			System.out.println("it is not prime number");
 		}
-		}else{
-		
-		File f = new File("primeiros_10000_primos.txt");
-		input = new Scanner(f);
-		if (input.hasNext()) {
-			int number;
-			File file = new File ("prime_output.txt");
-		    PrintWriter writer = new PrintWriter(file);
-			for(int count = input.nextInt();count>0;count--){
-				number = input.nextInt();
-				writer.println(number+" is "+(p.isPrime(number)?"":" not ")+" prime number");
-			}
-			writer.close();
-		}
-		}
+	}
+
+	public static void main(String[] args) {
+		Prime p = new Prime();
+		//System.out.println(p.checkComposite(-1,1,-2,-11));
+		System.out.println(MathFunctions.pow(2,35.1));
+		System.out.println(Math.pow(2, 35.1));
+		//System.out.println(Math.sqrt(0.5));
 	}
 }

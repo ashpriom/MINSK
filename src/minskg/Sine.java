@@ -9,8 +9,8 @@ public class Sine {
 			int i = 1;
 			while(i<=10){
 				int tmp = (2*i)-1;
-				double q = MathFunctions.computePower(x, tmp);
-				double fact_i = MathFunctions.computeFactorial(tmp);
+				double q = MathFunctions.pow(x, tmp);
+				double fact_i = MathFunctions.factorial(tmp);
 				if(i%2==1){
 					sum+=(q/fact_i);
 				}else{
@@ -38,11 +38,12 @@ public class Sine {
 	}
 	public static void main(String[] args) {
 		Sine a = new Sine();
-		/*
+		
 		System.out.println(a.computeCosine(1.5707963267948966/3d));
 		System.out.println(Math.cos(1.5707963267948966/3d));
-		*/
+		
 		System.out.println(a.acos(0.9));
 		System.out.println(Math.acos(0.9));
+		
 	}
 }

@@ -1,6 +1,4 @@
 package minskg;
-
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,33 +11,18 @@ public class Main {
 			do {
 				if (flag) {
 					System.out.println("choose again");
-				}
+				    }
 				input = sc.next();
 			} while (flag = !(input.equals("1") || input.equals("2") || input.equals("3")));
 			if (input.equals("1")) {
 				Prime p = new Prime();
-				try {
-					p.primeFunction();
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				p.primeFunction();
 			} else if (input.equals("2")) {
 				Quadratic q = new Quadratic();
-				try {
-					q.quadraticFunction();
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				q.quadraticFunction();
 			} else {
 				Cubic c = new Cubic();
-				try {
-					c.cubicFunction();
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				c.cubicFunction();
 			}
 		}
 	}

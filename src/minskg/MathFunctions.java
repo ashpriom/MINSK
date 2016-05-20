@@ -2,35 +2,42 @@ package minskg;
 
 public class MathFunctions {
 
-	public static double computePower(double a, double b) {
+	public static double pow(double a, double b) {
 
 		if (b < 0)
-			return 1 / computePower(a, -b);
+			return 1 / pow(a, -b);
 		else if (b == 0)
 			return 1;
 		else if (b == 1)
 			return a;
 		else
-			return a * computePower(a, b - 1);
+			return a * pow(a, b - 1);
 	}
 
-	public static double computeSqrt(double number) {
-		double x = 0, sqrt = number / 2;
-
-		do {
-			x = sqrt;
-			sqrt = (x + (number / x)) / 2;
-
-		} while ((x - sqrt) != 0);
-
-		return sqrt;
+	public static double sqrt(double number) {
+		double x = 0, y = number;
+		int iter = 35; // The greater the number of iteration, The accurate is
+						// the result
+		while (iter > 0) {
+			double t = (x + y) / 2;
+			if (t * t == number) // If square of a t is equal to the num itself
+									// then
+				return t; // Return Root
+			else if (t * t > number) // If square of t is greater than the num
+				y = t; // Update Upper Bound
+			else
+				x = t; // Update Lower Bound
+			iter--; // Decrease iteration
+		}
+		return (x + y) / 2; // Return closest value if root is not found in 35
+							// iterations
 	}
 
-	public double computeSummation(double number){
-		return number*(number+1)/2;
+	public static double sum(double number) {
+		return number * (number + 1) / 2;
 	}
-	
-	public int computeRound(double number) {
+
+	public static int round(double number) {
 
 		double absval = (number < 0) ? -number : number;
 		int i = (int) absval;
@@ -42,7 +49,7 @@ public class MathFunctions {
 		}
 	}
 
-	public double computeCosine(double radianVal) {
+	public static double cos(double radianVal) {
 		int expFact = 2;
 		double negationFac = 1.0, powSeries = 0.0, factResult = 0.0;
 
@@ -50,14 +57,14 @@ public class MathFunctions {
 														// factorialResult
 														// overflow is reached
 
-			factResult = computeFactorial(expFact);// calculate the factorial
+			factResult = factorial(expFact);// calculate the factorial
 
-			powSeries = 1 + (negationFac * (computePower(radianVal, expFact)) / factResult);// the
-																							// next
-																							// statement
-																							// calculates
-																							// power
-																							// series
+			powSeries = 1 + (negationFac * (pow(radianVal, expFact)) / factResult);// the
+																					// next
+																					// statement
+																					// calculates
+																					// power
+																					// series
 
 			negationFac *= -1.0;// the negation factor alternates + - + - +.....
 
@@ -67,7 +74,7 @@ public class MathFunctions {
 	}
 
 	// calculates the factorial
-	public static double computeFactorial(int x) {
+	public static double factorial(int x) {
 
 		double f = (double) x;
 		for (int i = x - 1; i > 0; i--) {
@@ -76,30 +83,24 @@ public class MathFunctions {
 		return f;
 	}
 
-	public static double computeCubeRoot(double x) {
-		   int s;
-		   int y, b, y2;
+	public static double cbrt(double x) {
+		int s;
+		int y, b, y2;
 
-		   y2 = 0;
-		   y = 0;
-		   for (s = 30; s >= 0; s = s - 3) {
-		      y2 = 4*y2;
-		      y = 2*y;
-		      b = (3*(y2 + y) + 1) << s;
-		      if (x >= b) {
-		         x = x - b;
-		         y2 = y2 + 2*y + 1;
-		         y = y + 1;
-		      }
-		   }
-		   return y;
+		y2 = 0;
+		y = 0;
+		for (s = 30; s >= 0; s = s - 3) {
+			y2 = 4 * y2;
+			y = 2 * y;
+			b = (3 * (y2 + y) + 1) << s;
+			if (x >= b) {
+				x = x - b;
+				y2 = y2 + 2 * y + 1;
+				y = y + 1;
+			}
 		}
-
-	public static void main(String args[]) {
-		MathFunctions mf = new MathFunctions();
-		double y = mf.computeCubeRoot(3);
-		System.out.println(y);
-		System.out.println(Math.cbrt(3));
+		return y;
 	}
 
+	
 }
