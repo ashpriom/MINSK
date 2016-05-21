@@ -14,6 +14,7 @@ public class MathFunctions {
 			return a * pow(a, b - 1);
 	}
 
+	
 	public static double sqrt(double number) {
 		double x = 0, y = number;
 		int iter = 35; // The greater the number of iteration, The accurate is
