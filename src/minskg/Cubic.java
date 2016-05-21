@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class Cubic {
 	/*
+	 * 
 	 * the algorithm source : http://www.1728.org/cubic2.htm
 	 */
 	String x1 = "", x2 = "", x3 = "";

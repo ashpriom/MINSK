@@ -13,6 +13,7 @@ public class Quadratic {
 		compute();
 	}
 
+	
 	public String getX() {
 		return "x1: " + x1 + "\nx2: " + x2 + "\n";
 	}
