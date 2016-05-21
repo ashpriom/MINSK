@@ -2,10 +2,20 @@ package minskg;
 
 import java.util.Scanner;
 
+/** 
+ * @author teamG
+ */
+
 public class Quadratic {
 	String x1 = "", x2 = "";
-	double a = 0, b = 0, c = 0, d = 0;
+	double a = 0, b = 0, c = 0;
 
+	/**
+	 * set constants a,b,c of the cubic equation; ax^2+bx+c = 0
+	 * @param a	coefficient of quadratic term; value a from a * x^2
+	 * @param b coefficient of term; value b from b * x
+	 * @param c constant c
+	 */
 	public void setCoefficient(int a, int b, int c) {
 		this.a = a;
 		this.b = b;
@@ -14,31 +24,39 @@ public class Quadratic {
 	}
 
 	
+	/**
+	 * to get 2 possible x on cubic equation
+	 * @return string of 2 x values
+	 */
 	public String getX() {
 		return "x1: " + x1 + "\nx2: " + x2 + "\n";
 	}
 
+	/**
+	 * use formula (-b+-sqrt(b^2-4ac))/2a
+	 */
 	public void compute() {
-		d = (b * b) - (4 * a * c);
+		double d = (b * b) - (4 * a * c);
 		// roots are real and unequal
 		if (d > 0) {
-
-			x1 = "" + (-b + MathFn.sqrt(d)) / (2 * a);
-			x2 = "" + (-b - MathFn.sqrt(d)) / (2 * a);
+			x1 = "" + (-b + MathFn.computeSqrt(d)) / (2 * a);
+			x2 = "" + (-b - MathFn.computeSqrt(d)) / (2 * a);
 		}
 		// roots are imaginary
 		else if (d < 0) {
-
 			x1 = "" + -b + "+" + "(" + d + "i)";
 			x2 = "" + -b + "-" + "(" + d + "i)";
 		}
 		// roots are real and equal (d==0)
 		else {
-			x1 = "" + (-b + MathFn.sqrt(d)) / (2 * a);
+			x1 = "" + (-b + MathFn.computeSqrt(d)) / (2 * a);
 		}
 
 	}
 
+	/**
+	 * to use a quadratic equation
+	 */
 	public void quadraticFunction() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("1:: to put number");

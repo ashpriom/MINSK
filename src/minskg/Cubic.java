@@ -1,26 +1,20 @@
 package minskg;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
- * 
  * @author teamG
- *
  */
+
 public class Cubic {
 	/*
-	 * 
 	 * the algorithm source : http://www.1728.org/cubic2.htm
 	 */
 	String x1 = "", x2 = "", x3 = "";
 	double a = 0, b = 0, c = 0, d = 0;
 
 	/**
-	 * get 3 possible x on cubic equation
-	 * 
+	 * to get 3 possible x on cubic equation
 	 * @return string of 3 x values
 	 */
 	public String getX() {
@@ -36,36 +30,36 @@ public class Cubic {
 	 */
 	public void compute() {
 		String text = "";
-		double f = ((3 * c / a) - (MathFn.pow(b, 2) / MathFn.pow(a, 2))) / 3d;
+		double f = ((3 * c / a) - (MathFn.computePower(b, 2) / MathFn.computePower(a, 2))) / 3d;
 		text += "\n" + "f:" + f;
-		double g = ((2 * MathFn.pow(b, 3) / MathFn.pow(a, 3)) - (9 * b * c / MathFn.pow(a, 2)) + (27 * d / a)) / 27;
+		double g = ((2 * MathFn.computePower(b, 3) / MathFn.computePower(a, 3)) - (9 * b * c / MathFn.computePower(a, 2)) + (27 * d / a)) / 27;
 		text += "\n" + "g:" + g;
-		double h = (g * g / 4) + (MathFn.pow(f, 3) / 27);
+		double h = (g * g / 4) + (MathFn.computePower(f, 3) / 27);
 		text += "\n" + "h:" + h;
 
 		if (h > 0) {
-			double r = -(g / 2) + MathFn.sqrt(h);
-			double s = MathFn.cuberoot(r);
-			double t = -(g / 2) - MathFn.sqrt(h);
-			double u = MathFn.cuberoot(t);
+			double r = -(g / 2) + MathFn.computeSqrt(h);
+			double s = MathFn.computeCbrt(r);
+			double t = -(g / 2) - MathFn.computeSqrt(h);
+			double u = MathFn.computeCbrt(t);
 			text += "\n" + "----case1----\n" + "r:" + r + "\n" + "s:" + s;
 			text += "\n" + "t:" + t + "\n" + "u:" + u;
 			x1 = "" + ((s + u) - (b / (3 * a)));
-			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFn.sqrt(3) / 2d));
-			x3 = "" + (-(s + u) / 2 - (b / (3 * a))) + "-i*" + (((s - u) * MathFn.sqrt(3) / 2d));
+			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFn.computeSqrt(3) / 2d));
+			x3 = "" + (-(s + u) / 2 - (b / (3 * a))) + "-i*" + (((s - u) * MathFn.computeSqrt(3) / 2d));
 		} else if (f == 0 && g == 0 && h == 0) {
 			text += "\n" + "case2";
-			x1 = "" + (MathFn.cuberoot(d / a) * -1);
-			x2 = "" + (MathFn.cuberoot(d / a) * -1);
-			x3 = "" + (MathFn.cuberoot(d / a) * -1);
+			x1 = "" + (MathFn.computeCbrt(d / a) * -1);
+			x2 = "" + (MathFn.computeCbrt(d / a) * -1);
+			x3 = "" + (MathFn.computeCbrt(d / a) * -1);
 
 		} else {
-			double i = MathFn.sqrt(((g * g) / 4) - h);
-			double j = MathFn.cuberoot(i);
+			double i = MathFn.computeSqrt(((g * g) / 4) - h);
+			double j = MathFn.computeCbrt(i);
 			double k = TrigonometricFn.computeArcCosine(-(g / (2 * i)));
 			double l = j * -1;
 			double m = TrigonometricFn.computeCosine(k / 3);
-			double n = MathFn.sqrt(3) * TrigonometricFn.computeSine(k / 3);
+			double n = MathFn.computeSqrt(3) * TrigonometricFn.computeSine(k / 3);
 			double p = (b / (3d * a)) * -1;
 			text += "\n----case3----\ni:" + i + "\nj:" + j + "\nk:" + k;
 			text += "\nl:" + l + "\nm:" + m + "\nn:" + n + "\np:" + p;
@@ -76,66 +70,12 @@ public class Cubic {
 		System.out.println(text);
 	}
 
-	
-	/**
-	 * use formula to find X there are 3 cases If h > 0, there is only 1 real
-	 * root and is solved by another method. If f=0, g=0 and h = 0, all 3 roots
-	 * are real and equal. If h <= 0, as is the case here, all 3 roots are real.
-	 */
-	public void computeWithoutBuildin() {
-		String text = "";
-		double f = ((3 * c / a) - (MathFn.pow(b, 2) / MathFn.pow(a, 2))) / 3d;
-		text += "\n" + "f:" + f;
-		double g = ((2 * MathFn.pow(b, 3) / MathFn.pow(a, 3)) - (9 * b * c / MathFn.pow(a, 2)) + (27 * d / a)) / 27;
-		text += "\n" + "g:" + g;
-		double h = (g * g / 4) + (MathFn.pow(f, 3) / 27);
-		text += "\n" + "h:" + h;
-
-		if (h > 0) {
-			double r = -(g / 2) + MathFn.sqrt(h);
-			double s = MathFn.cuberoot(r);
-			double t = -(g / 2) - MathFn.sqrt(h);
-			double u = MathFn.cuberoot(t);
-			text += "\n" + "----case1----\n" + "r:" + r + "\n" + "s:" + s;
-			text += "\n" + "t:" + t + "\n" + "u:" + u;
-			x1 = "" + ((s + u) - (b / (3 * a)));
-			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFn.sqrt(3) / 2d));
-			x3 = "" + (-(s + u) / 2 - (b / (3 * a))) + "-i*" + (((s - u) * MathFn.sqrt(3) / 2d));
-		} else if (f == 0 && g == 0 && h == 0) {
-			text += "\n" + "case2";
-			x1 = "" + (MathFn.cuberoot(d / a) * -1);
-			x2 = "" + (MathFn.cuberoot(d / a) * -1);
-			x3 = "" + (MathFn.cuberoot(d / a) * -1);
-
-		} else {
-			double i = MathFn.sqrt(((g * g) / 4) - h);
-			double j = MathFn.cuberoot(i);
-			double k = TrigonometricFn.computeArcCosine(-(g / (2 * i)));
-			double l = j * -1;
-			double m = TrigonometricFn.computeCosine(k / 3);
-			double n = MathFn.sqrt(3) * TrigonometricFn.computeSine(k / 3);
-			double p = (b / (3d * a)) * -1;
-			text += "\n----case3----\ni:" + i + "\nj:" + j + "\nk:" + k;
-			text += "\nl:" + l + "\nm:" + m + "\nn:" + n + "\np:" + p;
-			x1 = "" + ((2 * j * Math.cos(k / 3d)) - (b / (3d * a)));
-			x2 = "" + (l * (m + n) + p);
-			x3 = "" + (l * (m - n) + p);
-		}
-		System.out.println(text);
-	}
-	
-	
 	/**
 	 * set constants a,b,c,d of the cubic equation; ax^3+bx^2+cx+d = 0
-	 * 
-	 * @param a
-	 *            cubic coefficient; value a from a * x^3
-	 * @param b
-	 *            quadratic coefficient; value b from b * x^2
-	 * @param c
-	 *            linear coefficient; value c from c * x
-	 * @param d
-	 *            constant d
+	 * @param a coefficient of cubic term; value a from a * x^3
+	 * @param b coefficient of quadratic term; value b from b * x^2
+	 * @param c coefficient of linear term; value c from c * x
+	 * @param d constant d
 	 */
 	public void setCoefficient(int a, int b, int c, int d) {
 		this.a = a;
@@ -146,13 +86,7 @@ public class Cubic {
 	}
 
 	/**
-	 * to test a couple of cubic equation and save the result on
-	 * cubic_output.txt or to test a cubic equation
-	 * 
-	 * @param args
-	 *            unused
-	 * @throws FileNotFoundException
-	 *             no file
+	 * to use a cubic equation
 	 */
 	public void cubicFunction() {
 		Scanner input = new Scanner(System.in);

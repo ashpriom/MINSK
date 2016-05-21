@@ -1,7 +1,14 @@
 package minskg;
 import java.util.Scanner;
 
+/**
+ * @author teamG
+ */
+
 public class Main {
+	/**
+	 * main menu
+	 */
 	public void start() {
 		Scanner sc = new Scanner(System.in);
 		String input;
@@ -27,6 +34,10 @@ public class Main {
 		}
 	}
 
+	/**
+	 * to run the project
+	 * @param args unused
+	 */
 	public static void main(String[] args) {
 		Main m = new Main();
 		m.start();
