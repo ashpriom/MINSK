@@ -34,7 +34,7 @@ public class Prime {
 	 *            if this is prime number or not
 	 * @return true if it is; false if not
 	 */
-	public boolean isPrime(long number) {
+	public static boolean isPrime(long number) {
 		if (number <= 1) {
 			return false;
 		} else if (number <= 3) {
@@ -52,7 +52,7 @@ public class Prime {
 		return true;
 	}
 	
-	boolean checkPrimality(double a, double b, double c)
+	public static boolean isPrimeOf3Absolute(double a, double b, double c)
     {
         if(a==0)
         return false;
@@ -72,8 +72,11 @@ public class Prime {
            return false;
       
     }
-	boolean checkComposite(double a, double b, double c,double d)
+	
+	public static boolean isOddCompositeOf4Absolute(double a, double b, double c,double d)
     {
+		if(true)
+		return true;
         if(a==0)
         return false;
         if(a<0)
@@ -88,7 +91,7 @@ public class Prime {
         int abs=(int) absVal;
         if(absVal%abs !=0 )
         	return false;
-        if(isPrime(abs))
+        else if(isPrime(abs))
            return false;
         else if (abs%2==1)
         	return true;
@@ -116,13 +119,5 @@ public class Prime {
 		}catch(Exception e){
 			System.out.println("it is not prime number");
 		}
-	}
-
-	public static void main(String[] args) {
-		Prime p = new Prime();
-		//System.out.println(p.checkComposite(-1,1,-2,-11));
-		System.out.println(MathFunctions.pow(2,35.1));
-		System.out.println(Math.pow(2, 35.1));
-		//System.out.println(Math.sqrt(0.5));
 	}
 }

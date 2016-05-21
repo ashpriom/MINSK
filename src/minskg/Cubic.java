@@ -35,40 +35,40 @@ public class Cubic {
 	 */
 	public void compute() {
 		String text = "";
-		double f = ((3 * c / a) - (Math.pow(b, 2) / Math.pow(a, 2))) / 3d;
+		double f = ((3 * c / a) - (MathFn.pow(b, 2) / MathFn.pow(a, 2))) / 3d;
 		text += "\n" + "f:" + f;
-		double g = ((2 * Math.pow(b, 3) / Math.pow(a, 3)) - (9 * b * c / Math.pow(a, 2)) + (27 * d / a)) / 27;
+		double g = ((2 * MathFn.pow(b, 3) / MathFn.pow(a, 3)) - (9 * b * c / MathFn.pow(a, 2)) + (27 * d / a)) / 27;
 		text += "\n" + "g:" + g;
-		double h = (g * g / 4) + (Math.pow(f, 3) / 27);
+		double h = (g * g / 4) + (MathFn.pow(f, 3) / 27);
 		text += "\n" + "h:" + h;
 
 		if (h > 0) {
-			double r = -(g / 2) + MathFunctions.sqrt(h);
-			double s = Math.cbrt(r);
-			double t = -(g / 2) - MathFunctions.sqrt(h);
-			double u = Math.cbrt(t);
+			double r = -(g / 2) + MathFn.sqrt(h);
+			double s = MathFn.cuberoot(r);
+			double t = -(g / 2) - MathFn.sqrt(h);
+			double u = MathFn.cuberoot(t);
 			text += "\n" + "----case1----\n" + "r:" + r + "\n" + "s:" + s;
 			text += "\n" + "t:" + t + "\n" + "u:" + u;
 			x1 = "" + ((s + u) - (b / (3 * a)));
-			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFunctions.sqrt(3) / 2d));
-			x3 = "" + (-(s + u) / 2 - (b / (3 * a))) + "-i*" + (((s - u) * MathFunctions.sqrt(3) / 2d));
+			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFn.sqrt(3) / 2d));
+			x3 = "" + (-(s + u) / 2 - (b / (3 * a))) + "-i*" + (((s - u) * MathFn.sqrt(3) / 2d));
 		} else if (f == 0 && g == 0 && h == 0) {
 			text += "\n" + "case2";
-			x1 = "" + (Math.cbrt(d / a) * -1);
-			x2 = "" + (Math.cbrt(d / a) * -1);
-			x3 = "" + (Math.cbrt(d / a) * -1);
+			x1 = "" + (MathFn.cuberoot(d / a) * -1);
+			x2 = "" + (MathFn.cuberoot(d / a) * -1);
+			x3 = "" + (MathFn.cuberoot(d / a) * -1);
 
 		} else {
-			double i = MathFunctions.sqrt(((g * g) / 4) - h);
-			double j = Math.cbrt(i);
-			double k = Math.acos(-(g / (2 * i)));
+			double i = MathFn.sqrt(((g * g) / 4) - h);
+			double j = MathFn.cuberoot(i);
+			double k = TrigonometricFn.computeArcCosine(-(g / (2 * i)));
 			double l = j * -1;
-			double m = Sine.computeCosine(k / 3);
-			double n = MathFunctions.sqrt(3) * Sine.computeSine(k / 3);
+			double m = TrigonometricFn.computeCosine(k / 3);
+			double n = MathFn.sqrt(3) * TrigonometricFn.computeSine(k / 3);
 			double p = (b / (3d * a)) * -1;
 			text += "\n----case3----\ni:" + i + "\nj:" + j + "\nk:" + k;
 			text += "\nl:" + l + "\nm:" + m + "\nn:" + n + "\np:" + p;
-			x1 = "" + ((2 * j * Math.cos(k / 3d)) - (b / (3d * a)));
+			x1 = "" + ((2 * j * TrigonometricFn.computeCosine(k / 3d)) - (b / (3d * a)));
 			x2 = "" + (l * (m + n) + p);
 			x3 = "" + (l * (m - n) + p);
 		}
@@ -83,36 +83,36 @@ public class Cubic {
 	 */
 	public void computeWithoutBuildin() {
 		String text = "";
-		double f = ((3 * c / a) - (Math.pow(b, 2) / Math.pow(a, 2))) / 3d;
+		double f = ((3 * c / a) - (MathFn.pow(b, 2) / MathFn.pow(a, 2))) / 3d;
 		text += "\n" + "f:" + f;
-		double g = ((2 * Math.pow(b, 3) / Math.pow(a, 3)) - (9 * b * c / Math.pow(a, 2)) + (27 * d / a)) / 27;
+		double g = ((2 * MathFn.pow(b, 3) / MathFn.pow(a, 3)) - (9 * b * c / MathFn.pow(a, 2)) + (27 * d / a)) / 27;
 		text += "\n" + "g:" + g;
-		double h = (g * g / 4) + (Math.pow(f, 3) / 27);
+		double h = (g * g / 4) + (MathFn.pow(f, 3) / 27);
 		text += "\n" + "h:" + h;
 
 		if (h > 0) {
-			double r = -(g / 2) + MathFunctions.sqrt(h);
-			double s = Math.cbrt(r);
-			double t = -(g / 2) - MathFunctions.sqrt(h);
-			double u = Math.cbrt(t);
+			double r = -(g / 2) + MathFn.sqrt(h);
+			double s = MathFn.cuberoot(r);
+			double t = -(g / 2) - MathFn.sqrt(h);
+			double u = MathFn.cuberoot(t);
 			text += "\n" + "----case1----\n" + "r:" + r + "\n" + "s:" + s;
 			text += "\n" + "t:" + t + "\n" + "u:" + u;
 			x1 = "" + ((s + u) - (b / (3 * a)));
-			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFunctions.sqrt(3) / 2d));
-			x3 = "" + (-(s + u) / 2 - (b / (3 * a))) + "-i*" + (((s - u) * MathFunctions.sqrt(3) / 2d));
+			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFn.sqrt(3) / 2d));
+			x3 = "" + (-(s + u) / 2 - (b / (3 * a))) + "-i*" + (((s - u) * MathFn.sqrt(3) / 2d));
 		} else if (f == 0 && g == 0 && h == 0) {
 			text += "\n" + "case2";
-			x1 = "" + (Math.cbrt(d / a) * -1);
-			x2 = "" + (Math.cbrt(d / a) * -1);
-			x3 = "" + (Math.cbrt(d / a) * -1);
+			x1 = "" + (MathFn.cuberoot(d / a) * -1);
+			x2 = "" + (MathFn.cuberoot(d / a) * -1);
+			x3 = "" + (MathFn.cuberoot(d / a) * -1);
 
 		} else {
-			double i = MathFunctions.sqrt(((g * g) / 4) - h);
-			double j = MathFunctions.cbrt(i);
-			double k = Math.acos(-(g / (2 * i)));
+			double i = MathFn.sqrt(((g * g) / 4) - h);
+			double j = MathFn.cuberoot(i);
+			double k = TrigonometricFn.computeArcCosine(-(g / (2 * i)));
 			double l = j * -1;
-			double m = Sine.computeCosine(k / 3);
-			double n = MathFunctions.sqrt(3) * Sine.computeSine(k / 3);
+			double m = TrigonometricFn.computeCosine(k / 3);
+			double n = MathFn.sqrt(3) * TrigonometricFn.computeSine(k / 3);
 			double p = (b / (3d * a)) * -1;
 			text += "\n----case3----\ni:" + i + "\nj:" + j + "\nk:" + k;
 			text += "\nl:" + l + "\nm:" + m + "\nn:" + n + "\np:" + p;
@@ -171,7 +171,11 @@ public class Cubic {
 				}
 			} while (!is_number);
 		}
-		c.setCoefficient(coeff[0], coeff[1], coeff[2], coeff[3]);
-		System.out.println(c.getX());
+		if(Prime.isOddCompositeOf4Absolute(coeff[0], coeff[1], coeff[2], coeff[3])){
+			c.setCoefficient(coeff[0], coeff[1], coeff[2], coeff[3]);
+			System.out.println(c.getX());
+		}else{
+			System.out.println("sum of these absolute value is not odd composite number");
+		}
 	}
 }

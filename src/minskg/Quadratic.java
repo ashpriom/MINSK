@@ -22,8 +22,8 @@ public class Quadratic {
 		// roots are real and unequal
 		if (d > 0) {
 
-			x1 = "" + (-b + MathFunctions.sqrt(d)) / (2 * a);
-			x2 = "" + (-b - MathFunctions.sqrt(d)) / (2 * a);
+			x1 = "" + (-b + MathFn.sqrt(d)) / (2 * a);
+			x2 = "" + (-b - MathFn.sqrt(d)) / (2 * a);
 		}
 		// roots are imaginary
 		else if (d < 0) {
@@ -33,12 +33,12 @@ public class Quadratic {
 		}
 		// roots are real and equal (d==0)
 		else {
-			x1 = "" + (-b + MathFunctions.sqrt(d)) / (2 * a);
+			x1 = "" + (-b + MathFn.sqrt(d)) / (2 * a);
 		}
-		
+
 	}
 
-	public void quadraticFunction(){
+	public void quadraticFunction() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("1:: to put number");
 		Quadratic quad = new Quadratic();
@@ -48,17 +48,20 @@ public class Quadratic {
 			do {
 				char coeff_var = i == 0 ? 'a' : i == 1 ? 'b' : 'c';
 				System.out.println("put coefficient " + coeff_var + " value :");
-				try{
+				try {
 					coeff[i] = input.nextInt();
 					is_number = true;
-				} catch(java.util.InputMismatchException e) {
+				} catch (java.util.InputMismatchException e) {
 					input.next();
 					System.out.println("it is not number, put coefficient " + coeff_var + " again");
 				}
 			} while (!is_number);
 		}
-		quad.setCoefficient(coeff[0], coeff[1], coeff[2]);
-		System.out.println("check");
-		System.out.println(quad.getX());
+		if (Prime.isPrimeOf3Absolute(coeff[0], coeff[1], coeff[2])) {
+			quad.setCoefficient(coeff[0], coeff[1], coeff[2]);
+			System.out.println(quad.getX());
+		} else {
+			System.out.println("sum of the absolute of these value is not prime");
+		}
 	}
 }
