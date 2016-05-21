@@ -36,22 +36,22 @@ public class Quadratic {
 	 * use formula (-b+-sqrt(b^2-4ac))/2a
 	 */
 	public void compute() {
-		double d = (b * b) - (4 * a * c);
+		double d =(b * b) - (4 * a * c);
 		// roots are real and unequal
 		if (d > 0) {
-			x1 = "" + (-b + MathFn.computeSqrt(d)) / (2 * a);
-			x2 = "" + (-b - MathFn.computeSqrt(d)) / (2 * a);
+			x1 = "" + ((-b + MathFn.computeSqrt(d)) / (2 * a));
+			x2 = "" + ((-b - MathFn.computeSqrt(d)) / (2 * a));
 		}
 		// roots are imaginary
 		else if (d < 0) {
-			x1 = "" + -b + "+" + "(" + d + "i)";
-			x2 = "" + -b + "-" + "(" + d + "i)";
+			double r = MathFn.computeSqrt(-d)/(2*a);
+			x1 = "" + (-b/(2*a)) + "+" + r + "i";
+			x2 = "" + (-b/(2*a)) + "-" + r + "i";
 		}
 		// roots are real and equal (d==0)
 		else {
 			x1 = "" + (-b + MathFn.computeSqrt(d)) / (2 * a);
 		}
-
 	}
 
 	/**

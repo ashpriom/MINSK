@@ -33,6 +33,9 @@ public class MathFn {
 		double x = 0, y = number;
 		int iter = 35; // The greater the number of iteration, The accurate is
 						// the result
+		if(number==1){
+			return 1;
+		}
 		while (iter > 0) {
 			double t = (x + y) / 2;
 			if (t * t == number) // If square of a t is equal to the num itself
