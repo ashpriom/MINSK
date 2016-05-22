@@ -67,7 +67,6 @@ public class Cubic {
 			x2 = "" + (l * (m + n) + p);
 			x3 = "" + (l * (m - n) + p);
 		}
-		System.out.println(text);
 	}
 
 	/**
@@ -96,7 +95,6 @@ public class Cubic {
 	 * @return true if it is sum of 4 absolute value is odd composite number, if not false
 	 */
 	public static boolean isOddCompositeOf4Absolute(double a, double b, double c, double d) {
-		if(true)return true;
 		if (a == 0)
 			return false;
 		else if (a < 0)
@@ -131,7 +129,7 @@ public class Cubic {
 			boolean is_number = false;
 			do {
 				char coeff_var = i == 0 ? 'a' : i == 1 ? 'b' : i == 2 ? 'c' : 'd';
-				System.out.println("put coefficient " + coeff_var + " value :");
+				System.out.println("put coefficient " + coeff_var + " value : ");
 				try{
 					is_number = true;
 					coeff[i] = input.nextInt();

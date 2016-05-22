@@ -73,7 +73,7 @@ public class MathFn {
 	 * @return a cube root of x
 	 */
 	public static double computeCbrt(double x) {
-		return computeCbrt(x, 10);
+		return computeCbrt(x, 18);
 	}
 
 	/**
@@ -87,23 +87,24 @@ public class MathFn {
 	 */
 	public static double computeCbrt(double x, int digit) {
 		double y = 0;
+		boolean isNegative = false;
+
 		if (x < 0) {
-			for (int i = -1; i > x; i--) {
-				y = i;
-				if (i * i * i < x) {
-					y = i + 1;
-					break;
-				}
-			}
-		} else {
-			for (int i = 0; i < x; i++) {
-				if (i * i * i > x) {
-					y = i - 1;
-					break;
-				}
+			isNegative = true;
+			x *= -1;
+		}
+		if (x < 1) {
+			return computeCbrtDigit(isNegative ? x * -1 : x, 0, digit);
+		} else if (x < 2) {
+			return computeCbrtDigit(isNegative ? x * -1 : x, isNegative ? -1 : 1, digit);
+		}
+		for (int i = 2; i < x; i++) {
+			if (i * i * i > x) {
+				y = i - 1;
+				break;
 			}
 		}
-		return computeCbrtDigit(x, y, digit);
+		return computeCbrtDigit(isNegative ? x * -1 : x, isNegative ? y * -1 : y, digit);
 	}
 
 	/**
@@ -119,27 +120,26 @@ public class MathFn {
 	 */
 	private static double computeCbrtDigit(double x, double y, int digit) {
 		double value = 0;
+		boolean isNegative = false;
 		if (x < 0) {
-			for (int i = 1; i < digit; i++) {
-				for (int j = 1; j < 10; j++) {
-					value = (y * MathFn.computePower(10, i) - j) / MathFn.computePower(10, i);
-					if (value * value * value < x) {
-						y = value + (1 / MathFn.computePower(10, i));
-						break;
-					}
+			x *= -1;
+			y *= -1;
+			isNegative = true;
+		}
+		for (int i = 1; i < digit; i++) {
+			int j;
+			for (j = 1; j < 10; j++) {
+				value = (y * MathFn.computePower(10, i) + j) / MathFn.computePower(10, i);
+				if (value * value * value > x) {
+					y = value - (1 / MathFn.computePower(10, i));
+					break;
 				}
 			}
-		} else {
-			for (int i = 1; i < digit; i++) {
-				for (int j = 1; j < 10; j++) {
-					value = (y * MathFn.computePower(10, i) + j) / MathFn.computePower(10, i);
-					if (value * value * value > x) {
-						y = value - (1 / MathFn.computePower(10, i));
-						break;
-					}
-				}
+			if (j == 10) {
+				y = value;
 			}
 		}
-		return y;
+		return isNegative ? y * -1 : y;
 	}
+
 }

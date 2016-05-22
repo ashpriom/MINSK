@@ -16,7 +16,7 @@ public class Quadratic {
 	 * @param b coefficient of term; value b from b * x
 	 * @param c constant c
 	 */
-	public void setCoefficient(int a, int b, int c) {
+	public void setCoefficient(double a, double b, double c) {
 		this.a = a;
 		this.b = b;
 		this.c = c;
@@ -89,14 +89,14 @@ public class Quadratic {
 		Scanner input = new Scanner(System.in);
 		System.out.println("1:: to put number");
 		Quadratic quad = new Quadratic();
-		int coeff[] = new int[3];
+		double coeff[] = new double[3];
 		for (int i = 0; i < 3; i++) {
 			boolean is_number = false;
 			do {
 				char coeff_var = i == 0 ? 'a' : i == 1 ? 'b' : 'c';
 				System.out.println("put coefficient " + coeff_var + " value :");
 				try {
-					coeff[i] = input.nextInt();
+					coeff[i] = input.nextDouble();
 					is_number = true;
 				} catch (java.util.InputMismatchException e) {
 					input.next();
