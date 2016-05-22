@@ -87,20 +87,20 @@ public class Quadratic {
 	 */
 	public void quadraticFunction() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("1:: to put number");
+		System.out.println("1: Enter coefficient values for calculating roots of Quadratic equation");
 		Quadratic quad = new Quadratic();
 		double coeff[] = new double[3];
 		for (int i = 0; i < 3; i++) {
 			boolean is_number = false;
 			do {
 				char coeff_var = i == 0 ? 'a' : i == 1 ? 'b' : 'c';
-				System.out.println("put coefficient " + coeff_var + " value :");
+				System.out.println("Enter coefficient " + coeff_var + " value :");
 				try {
 					coeff[i] = input.nextDouble();
 					is_number = true;
 				} catch (java.util.InputMismatchException e) {
 					input.next();
-					System.out.println("it is not number, put coefficient " + coeff_var + " again");
+					System.out.println("It is not number, enter coefficient " + coeff_var + " as a number");
 				}
 			} while (!is_number);
 		}
@@ -108,7 +108,7 @@ public class Quadratic {
 			quad.setCoefficient(coeff[0], coeff[1], coeff[2]);
 			System.out.println(quad.getX());
 		} else {
-			System.out.println("sum of the absolute of these value is not prime");
+			System.out.println("Sum of the absolute values for coeeficients is not a prime number. Try again.");
 		}
 	}
 }
