@@ -76,7 +76,7 @@ public class Cubic {
 	 * @param c coefficient of linear term; value c from c * x
 	 * @param d constant d
 	 */
-	public void setCoefficient(int a, int b, int c, int d) {
+	public void setCoefficient(double a, double b, double c, double d) {
 		this.a = a;
 		this.b = b;
 		this.c = c;
@@ -124,7 +124,7 @@ public class Cubic {
 	public void cubicFunction() {
 		Scanner input = new Scanner(System.in);
 		Cubic c = new Cubic();
-		int coeff[] = new int[4];
+		double coeff[] = new double[4];
 		for (int i = 0; i < 4; i++) {
 			boolean is_number = false;
 			do {
@@ -132,7 +132,7 @@ public class Cubic {
 				System.out.println("put coefficient " + coeff_var + " value : ");
 				try{
 					is_number = true;
-					coeff[i] = input.nextInt();
+					coeff[i] = input.nextDouble();
 				}catch(Exception e){
 					System.out.println("it is not number, put coefficient " + coeff_var + " again");
 					input.next();
