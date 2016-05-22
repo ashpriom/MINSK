@@ -55,6 +55,34 @@ public class Quadratic {
 	}
 
 	/**
+	 * to check the summation of 3 absolute value is prime number
+	 * @param a coefficient of quadratic term
+	 * @param b coefficient of linear term
+	 * @param c constant
+	 * @return true if it is sum of 3 absolute value is prime number, if not false
+	 */
+	public static boolean isPrimeOf3Absolute(double a, double b, double c) {
+		if (a == 0)
+			return false;
+		if (a < 0)
+			a = a * -1;
+		if (b < 0)
+			b = b * -1;
+		if (c < 0)
+			c = c * -1;
+		double absVal = a + b + c;
+		int abs = (int) absVal;
+		if (absVal % abs != 0)
+			return false;
+		if (Prime.isPrime(abs))
+			return true;
+		else
+			return false;
+
+	}
+
+	
+	/**
 	 * to use a quadratic equation
 	 */
 	public void quadraticFunction() {
@@ -76,7 +104,7 @@ public class Quadratic {
 				}
 			} while (!is_number);
 		}
-		if (Prime.isPrimeOf3Absolute(coeff[0], coeff[1], coeff[2])) {
+		if (isPrimeOf3Absolute(coeff[0], coeff[1], coeff[2])) {
 			quad.setCoefficient(coeff[0], coeff[1], coeff[2]);
 			System.out.println(quad.getX());
 		} else {

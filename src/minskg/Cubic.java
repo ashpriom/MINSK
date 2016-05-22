@@ -85,6 +85,41 @@ public class Cubic {
 		compute();
 	}
 
+	
+
+	/**
+	 * to check the summation of 4 absolute value is odd composite number
+	 * @param a coefficient of cubic term
+	 * @param b coefficient of quadratic term
+	 * @param c coefficient of linear term
+	 * @param d constant
+	 * @return true if it is sum of 4 absolute value is odd composite number, if not false
+	 */
+	public static boolean isOddCompositeOf4Absolute(double a, double b, double c, double d) {
+		if(true)return true;
+		if (a == 0)
+			return false;
+		else if (a < 0)
+			a = a * -1;
+		if (b < 0)
+			b = b * -1;
+		if (c < 0)
+			c = c * -1;
+		if (d < 0)
+			d = d * -1;
+		double absVal = a + b + c + d;
+		int abs = (int) absVal;
+		if (absVal % abs != 0)
+			return false;
+		else if (Prime.isPrime(abs))
+			return false;
+		else if (abs % 2 == 1)
+			return true;
+		else
+			return false;
+
+	}
+
 	/**
 	 * to use a cubic equation
 	 */
@@ -106,7 +141,7 @@ public class Cubic {
 				}
 			} while (!is_number);
 		}
-		if(Prime.isOddCompositeOf4Absolute(coeff[0], coeff[1], coeff[2], coeff[3])){
+		if(isOddCompositeOf4Absolute(coeff[0], coeff[1], coeff[2], coeff[3])){
 			c.setCoefficient(coeff[0], coeff[1], coeff[2], coeff[3]);
 			System.out.println(c.getX());
 		}else{
