@@ -86,7 +86,6 @@ public class MathFn {
 	 * @return a cube root of x
 	 */
 	public static double computeCbrt(double x, int digit) {
-		double y = 0;
 		boolean isNegative = false;
 
 		if (x < 0) {
@@ -98,12 +97,35 @@ public class MathFn {
 		} else if (x < 2) {
 			return computeCbrtDigit(isNegative ? x * -1 : x, isNegative ? -1 : 1, digit);
 		}
-		for (int i = 2; i < x; i++) {
-			if (i * i * i > x) {
-				y = i - 1;
+		boolean flag = true;
+		
+		double j=1;
+		double e=0;
+		for (;e==0;j++) {
+			if(MathFn.computePower(MathFn.computePower(10, j),3)>x){
+				e=MathFn.computePower(10, j-1);
+			}
+		}
+		System.out.println("j2::"+j);
+		int i;
+		for(i = 2; i<10;i++){
+			if(MathFn.computePower(e*i,3)>x){
+				System.out.println(--i);
 				break;
 			}
 		}
+		
+		
+		double y = e*i;
+		for (; e >= 1; e/=10) {
+			for (int l = 1; l < 10; l++) {
+				if(MathFn.computePower(y+(e*l),3)>x){
+					y = y+(e*(l-1));
+					break;
+				}
+			}
+		}
+		
 		return computeCbrtDigit(isNegative ? x * -1 : x, isNegative ? y * -1 : y, digit);
 	}
 
@@ -141,5 +163,4 @@ public class MathFn {
 		}
 		return isNegative ? y * -1 : y;
 	}
-
 }
