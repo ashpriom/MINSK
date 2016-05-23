@@ -106,11 +106,10 @@ public class MathFn {
 				e=MathFn.computePower(10, j-1);
 			}
 		}
-		System.out.println("j2::"+j);
 		int i;
 		for(i = 2; i<10;i++){
 			if(MathFn.computePower(e*i,3)>x){
-				System.out.println(--i);
+				--i;
 				break;
 			}
 		}

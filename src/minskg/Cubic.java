@@ -34,7 +34,7 @@ public class Cubic {
 		text += "\n" + "f:" + f;
 		double g = ((2 * MathFn.computePower(b, 3) / MathFn.computePower(a, 3)) - (9 * b * c / MathFn.computePower(a, 2)) + (27 * d / a)) / 27;
 		text += "\n" + "g:" + g;
-		double h = (g * g / 4) + (MathFn.computePower(f, 3) / 27);
+		double h = (MathFn.computePower(g, 2) / 4) + (MathFn.computePower(f, 3) / 27);
 		text += "\n" + "h:" + h;
 
 		if (h > 0) {
@@ -42,7 +42,7 @@ public class Cubic {
 			double s = MathFn.computeCbrt(r);
 			double t = -(g / 2) - MathFn.computeSqrt(h);
 			double u = MathFn.computeCbrt(t);
-			text += "\n" + "----case1----\n" + "r:" + r + "\n" + "s:" + s;
+			text += "\n" + "case1\n" + "r:" + r + "\n" + "s:" + s;
 			text += "\n" + "t:" + t + "\n" + "u:" + u;
 			x1 = "" + ((s + u) - (b / (3 * a)));
 			x2 = "" + (-(s + u) / 2 - (b / (3 * a))) + "+i*" + (((s - u) * MathFn.computeSqrt(3) / 2d));
