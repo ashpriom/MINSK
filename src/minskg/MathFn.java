@@ -39,7 +39,7 @@ public class MathFn {
 		double x;
 		double last = 0.0;
 		x = number;
-		for (;;) {
+		for (;number!=0;) {
 			first = (x + number / x) / 2.0;
 			x = first;
 			if (last == first)

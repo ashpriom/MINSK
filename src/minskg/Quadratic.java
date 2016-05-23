@@ -51,6 +51,7 @@ public class Quadratic {
 		// roots are real and equal (d==0)
 		else {
 			x1 = "" + (-b + MathFn.computeSqrt(d)) / (2 * a);
+			x2 = "" + (-b + MathFn.computeSqrt(d)) / (2 * a);
 		}
 	}
 
@@ -64,7 +65,7 @@ public class Quadratic {
 	public static boolean isPrimeOf3Absolute(double a, double b, double c) {
 		if (a == 0)
 			return false;
-		if (a < 0)
+		else if (a < 0)
 			a = a * -1;
 		if (b < 0)
 			b = b * -1;
