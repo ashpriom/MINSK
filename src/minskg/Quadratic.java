@@ -66,7 +66,7 @@ public class Quadratic {
 	 * @param c constant
 	 * @return true if it is sum of 3 absolute value is prime number, if not false
 	 */
-	public static boolean isPrimeOf3Absolute(double a, double b, double c) {
+	public static boolean isPrime(double a, double b, double c) {
 		if (a == 0)
 			return false;
 		else if (a < 0)
@@ -109,7 +109,7 @@ public class Quadratic {
 				}
 			} while (!is_number);
 		}
-		if (isPrimeOf3Absolute(coeff[0], coeff[1], coeff[2])) {
+		if (isPrime(coeff[0], coeff[1], coeff[2])) {
 			quad.setCoefficient(coeff[0], coeff[1], coeff[2]);
 			System.out.println(quad.getX());
 		} else {

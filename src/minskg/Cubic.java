@@ -94,7 +94,7 @@ public class Cubic {
 	 * @param d constant
 	 * @return true if it is sum of 4 absolute value is odd composite number, if not false
 	 */
-	public static boolean isOddCompositeOf4Absolute(double a, double b, double c, double d) {
+	public static boolean isOddComposite(double a, double b, double c, double d) {
 		if (a == 0)
 			return false;
 		else if (a < 0)
@@ -139,7 +139,7 @@ public class Cubic {
 				}
 			} while (!is_number);
 		}
-		if(isOddCompositeOf4Absolute(coeff[0], coeff[1], coeff[2], coeff[3])){
+		if(isOddComposite(coeff[0], coeff[1], coeff[2], coeff[3])){
 			c.setCoefficient(coeff[0], coeff[1], coeff[2], coeff[3]);
 			System.out.println(c.getX());
 		}else{
