@@ -81,6 +81,7 @@ public class MainGUI {
 				jl1.setText("ANSWER 1");
 				if (jcbMode.getSelectedIndex() == 0) {
 					jf.setSize(WIDTH, HEIGHT_1);
+					jtf2.setText("");
 					jtf1.setVisible(false);
 					jtf2.setBounds(115, 65, 160, 30);
 					jtf3.setVisible(false);
