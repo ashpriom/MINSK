@@ -36,19 +36,4 @@ public class Prime {
 		return true;
 	}
 
-	/**
-	 * to test a single number, if it is prime number or not.
-	 */
-	public void primeFunction() {
-		Scanner input = new Scanner(System.in);
-		Prime p = new Prime();
-		System.out.println("number ::");
-		int value = 0;
-		try {
-			value = input.nextInt();
-			System.out.println(value + " is " + (p.isPrime(value) ? "" : " not ") + " prime number");
-		} catch (Exception e) {
-			System.out.println("it is not prime number");
-		}
-	}
 }

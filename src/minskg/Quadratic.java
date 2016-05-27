@@ -28,10 +28,14 @@ public class Quadratic {
 	 * to get 2 possible x on cubic equation
 	 * @return string of 2 x values
 	 */
-	public String getX() {
-		return "x1: " + x1 + "\nx2: " + x2 + "\n";
+	public String getX1() {
+		return x1;
 	}
 
+	public String getX2() {
+		return x2;
+	}
+	
 	/**
 	 * use formula (-b+-sqrt(b^2-4ac))/2a
 	 */
@@ -84,36 +88,5 @@ public class Quadratic {
 		else
 			return false;
 
-	}
-
-	
-	/**
-	 * to use a quadratic equation
-	 */
-	public void quadraticFunction() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("1: Enter coefficient values for calculating roots of Quadratic equation");
-		Quadratic quad = new Quadratic();
-		double coeff[] = new double[3];
-		for (int i = 0; i < 3; i++) {
-			boolean is_number = false;
-			do {
-				char coeff_var = i == 0 ? 'a' : i == 1 ? 'b' : 'c';
-				System.out.println("Enter coefficient " + coeff_var + " value :");
-				try {
-					coeff[i] = input.nextDouble();
-					is_number = true;
-				} catch (java.util.InputMismatchException e) {
-					input.next();
-					System.out.println("It is not number, enter coefficient " + coeff_var + " as a number");
-				}
-			} while (!is_number);
-		}
-		if (isPrime(coeff[0], coeff[1], coeff[2])) {
-			quad.setCoefficient(coeff[0], coeff[1], coeff[2]);
-			System.out.println(quad.getX());
-		} else {
-			System.out.println("Sum of the absolute values for coeeficients is not a prime number. Try again.");
-		}
 	}
 }

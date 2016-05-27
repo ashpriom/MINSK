@@ -17,10 +17,15 @@ public class Cubic {
 	 * to get 3 possible x on cubic equation
 	 * @return string of 3 x values
 	 */
-	public String getX() {
-		return "x1: " + x1 + "\nx2: " + x2 + "\nx3: " + x3 + "\n";
+	public String getX1() {
+		return x1;
 	}
-
+	public String getX2() {
+		return x2;
+	}
+	public String getX3() {
+		return x3;
+	}
 	
 
 	/**
@@ -117,33 +122,5 @@ public class Cubic {
 			return false;
 
 	}
-
-	/**
-	 * to use a cubic equation
-	 */
-	public void cubicFunction() {
-		Scanner input = new Scanner(System.in);
-		Cubic c = new Cubic();
-		double coeff[] = new double[4];
-		for (int i = 0; i < 4; i++) {
-			boolean is_number = false;
-			do {
-				char coeff_var = i == 0 ? 'a' : i == 1 ? 'b' : i == 2 ? 'c' : 'd';
-				System.out.println("put coefficient " + coeff_var + " value : ");
-				try{
-					is_number = true;
-					coeff[i] = input.nextDouble();
-				}catch(Exception e){
-					System.out.println("it is not number, put coefficient " + coeff_var + " again");
-					input.next();
-				}
-			} while (!is_number);
-		}
-		if(isOddComposite(coeff[0], coeff[1], coeff[2], coeff[3])){
-			c.setCoefficient(coeff[0], coeff[1], coeff[2], coeff[3]);
-			System.out.println(c.getX());
-		}else{
-			System.out.println("sum of these absolute value is not odd composite number");
-		}
-	}
+	
 }
