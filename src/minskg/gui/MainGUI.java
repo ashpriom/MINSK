@@ -11,7 +11,7 @@ public class MainGUI {
 	static final int WIDTH = 400, MAIN_HEIGHT = 80, HEIGHT_1 = 160, HEIGHT_2 = 190, HEIGHT_3 = 220;
 	JFrame jf;
 	JButton jbGo, jbSolve, jbBack;
-	JComboBox<Integer> jcbMode;
+	JComboBox<String> jcbMode;
 	JTextField jtf1, jtf2, jtf3, jtf4;
 	JLabel jl1, jl2, jl3, jlInfo;
 	double a,b,c,d;
@@ -151,7 +151,7 @@ public class MainGUI {
 		jbGo = new JButton("Go");
 		jbBack = new JButton("Back");
 		jbSolve = new JButton("Solve");
-		jcbMode = new JComboBox(new String[] { "Prime", "Quadratic Equation", "Cubic Equation" });
+		jcbMode = new JComboBox<String>(new String[] { "Prime", "Quadratic Equation", "Cubic Equation" });
 		jlInfo = new JLabel();
 		jl1 = new JLabel("ANSWER 1");
 		jl2 = new JLabel("ANSWER 2");
