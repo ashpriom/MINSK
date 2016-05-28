@@ -24,7 +24,7 @@ public class MainGUI {
 					if (jcbMode.getSelectedIndex() == 0) {
 						String text = jtf2.getText();
 						if(text.length()>19){
-							JOptionPane.showMessageDialog(null, "Please put the number less than 19 digits");
+							JOptionPane.showMessageDialog(null, "Please put a number less than 19 digits");
 						}else{
 							ee = Long.parseLong(text);
 							Prime p = new Prime();
@@ -50,7 +50,7 @@ public class MainGUI {
 						jl3.setText("X3 :"+cubic.getX3());
 					}
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Please put number into the textbox");
+					JOptionPane.showMessageDialog(null, "Please put a number into the textbox");
 				}
 			}
 		});
@@ -86,7 +86,7 @@ public class MainGUI {
 					jtf2.setBounds(115, 65, 160, 30);
 					jtf3.setVisible(false);
 					jtf4.setVisible(false);
-					jlInfo.setText("put number to check prime number");
+					jlInfo.setText("Insert a number to check primality:");
 					//
 				} else if (jcbMode.getSelectedIndex() == 1) {
 					jf.setSize(WIDTH, HEIGHT_2);
@@ -100,7 +100,7 @@ public class MainGUI {
 					jtf3.setVisible(true);
 					jtf4.setVisible(false);
 					jl2.setText("ANSWER 2");
-					jlInfo.setText("put a, b, c for quadratic equation");
+					jlInfo.setText("Insert values for a, b, and c for a Quadratic Equation:");
 				} else {
 					jf.setSize(WIDTH, HEIGHT_3);
 					jtf1.setText("");
@@ -116,7 +116,7 @@ public class MainGUI {
 					jtf4.setBounds(285, 65, 80, 30);
 					jl2.setText("ANSWER 2");
 					jl3.setText("ANSWER 3");
-					jlInfo.setText("put a, b, c, d for cubic equation");
+					jlInfo.setText("Insert values for a, b, c, and d for a Cubic Equation:");
 				}
 				jlInfo.setVisible(true);
 			}
