@@ -112,8 +112,6 @@ public class MathFn {
 		} else if (x < 2) {
 			return computeCbrtDigit(isNegative ? x * -1 : x, isNegative ? -1 : 1, digit);
 		}
-		boolean flag = true;
-		
 		double j=1;
 		double e=0;
 		for (;e==0;j++) {

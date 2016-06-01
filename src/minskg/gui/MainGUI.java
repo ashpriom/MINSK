@@ -1,3 +1,22 @@
+/** 
+ * @author teamG
+ * MINSK
+ * SOEN 6611 - G
+ * The MIT License (MIT)
+ * Copyright (c) 2015 Nuttakit Phichitsakuldes, Ronak Ramanlal Prajapati, Pratyusha Prathikantham
+   Syed Ashfaque Uddin Priom, Golnoush Rahimzadeh, Dhanvin Raval, Kumaran Ayyappan Ravi
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+*/
+
 package minskg.gui;
 
 import java.awt.event.*;
@@ -16,6 +35,10 @@ public class MainGUI {
 	JLabel jl1, jl2, jl3, jltf1, jltf2, jltf3, jltf4, jlInfo;
 	double a,b,c,d;
 	long ee;
+	
+	/**
+	 * set some components' actions
+	 */
 	public void setListener() {
 		jbSolve.addActionListener(new ActionListener() {
 			@Override
@@ -27,8 +50,7 @@ public class MainGUI {
 							JOptionPane.showMessageDialog(null, "Please put a number less than 19 digits");
 						}else{
 							ee = Long.parseLong(text);
-							Prime p = new Prime();
-							jl1.setText(ee+" is "+(p.isPrime(ee)?"":"not")+" prime number");
+							jl1.setText(ee+" is "+(Prime.isPrime(ee)?"":"not")+" prime number");
 						}
 					} else if (jcbMode.getSelectedIndex() == 1) {
 						a = Double.parseDouble(jtf1.getText());
@@ -157,6 +179,9 @@ public class MainGUI {
 		});
 	}
 
+	/**
+	 * set components visibility
+	 */
 	public void setVisible() {
 		jl1.setVisible(true);
 		jl2.setVisible(true);
@@ -173,7 +198,10 @@ public class MainGUI {
 		jcbMode.setVisible(true);
 		jf.setVisible(true);
 	}
-
+	
+	/**
+	 * to initial all variable and set them in the frame
+	 */
 	public void init() {
 		jf = new JFrame("MINSK");
 		jbGo = new JButton("Go");
@@ -225,7 +253,11 @@ public class MainGUI {
 		setVisible();
 		setListener();
 	}
-
+	
+	/**
+	 * the main function
+	 * @param args unused
+	 */
 	public static void main(String[] args) {
 		MainGUI g = new MainGUI();
 		g.init();
