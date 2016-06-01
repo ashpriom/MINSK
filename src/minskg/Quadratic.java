@@ -19,8 +19,6 @@
 
 package minskg;
 
-import java.util.Scanner;
-
 public class Quadratic {
 	String x1 = "", x2 = "";
 	double a = 0, b = 0, c = 0;
