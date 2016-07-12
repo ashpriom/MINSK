@@ -26,6 +26,7 @@ import minskg.Cubic;
 import minskg.Prime;
 import minskg.Quadratic;
 
+
 public class MainGUI {
 	static final int WIDTH = 600, MAIN_HEIGHT = 80, HEIGHT_1 = 160, HEIGHT_2 = 190, HEIGHT_3 = 220;
 	JFrame jf;
